@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kolar programming</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" style="text-decoration: none;color: white;">
+                <h1 style="text-decoration: none; color: aqua;">Kolar programming</h1></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="Portfolio.html">What do we do?</a></li>
+                    <li><a href="news.html">News</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <h1 style="color: aqua;">NEWS</h1>
+    <section id="news" class="news">
+        <hr>
+        <h3>Contact us NOT working!</h3>
+        <p>The "contact us" thing is NOT working yet. I am currently working on that and i hope it will work soon. I will let you know.</p>
+   <hr>
+   <h3>Discord</h3>
+   <p>All the updates, announcements are on our Discord server. You can also ask questions there, because the "Contact us" is not working at the moment. The invite link is under "Contact us".</p>
+    <hr>
+    <h3>What do we do?</h3>
+    <p>I haven't been able to finish that page yet, I will let you know when it will be finished.</p>
+<hr>
+</section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 style="color: aqua;">Contact Us</h2>
+            <h1>MAIL NOT WORKING YET!</h1>
+            <form id="contactForm">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit" style="background-color: aqua;">Send Message</button>
+            </form>
+            <p id="formMessage"></p>
+            <br>
+            <h3>Dont forget to join our discord!</h2>
+                <a href="https://discord.gg/qXTC8EdS3M" target="_blank" style="text-decoration: none;">
+            <p style="color: aqua; text-decoration: none;">Karantanija
+            
+            </p>
+        </a>
+        </div>
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', async function(event) {
+                event.preventDefault(); // Prevents the default form submission
+                
+                // Gather form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value
+                };
+                
+                try {
+                    // Sending form data to the backend using Fetch API
+                    const response = await fetch('https://your-backend-api-url.com/contact', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    if (response.ok) {
+                        document.getElementById('formMessage').innerHTML = 'Thank you! Your message has been sent.';
+                        document.getElementById('contactForm').reset(); // Clears the form fields
+                    } else {
+                        document.getElementById('formMessage').innerHTML = 'There was an error. Please try again.';
+                    }
+                } catch (error) {
+                    document.getElementById('formMessage').innerHTML = 'Something went wrong. Please try again later.';
+                    console.error('Error:', error);
+                }
+            });
+            </script>
+            
+    </section>
+    
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Kolar programming. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
